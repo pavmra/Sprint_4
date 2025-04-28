@@ -1,6 +1,7 @@
 package test;
 
 
+import org.example.ElementsGlavnaya;
 import org.example.ElementsZakaz;
 import org.junit.After;
 import org.junit.Before;
@@ -24,6 +25,7 @@ public class ZakazTest {
 
     private WebDriver driver;
     private ElementsZakaz zakaz;
+    private ElementsGlavnaya glavnaya;
 
     private final String verhIliNiz;
     private final String name;
@@ -35,6 +37,7 @@ public class ZakazTest {
     private final String srok;
     private final String color;
     private final String coment;
+    private final By cookie =By.cssSelector(".App_CookieButton__3cvqF");
 
     public ZakazTest(String verhIliNiz, String name, String lastName, String adres,
                      String metro, String telefon, String data, String srok,
@@ -65,17 +68,19 @@ public class ZakazTest {
     @Before
     public void setup() {
         driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.manage().window().maximize();
         zakaz = new ElementsZakaz(driver);
-        driver.findElement(By.cssSelector(".App_CookieButton__3cvqF")).click();
+        glavnaya = new ElementsGlavnaya(driver);
+        glavnaya.open();
+        driver.findElement(cookie).click();
     }
 
     @Test
     public void zakazTest(){
         if (verhIliNiz.equals("verh")){
-            zakaz.clickZakaz1();
+            glavnaya.clicZakaz1();
         } else {
-            zakaz.clickZakaz2();
+            glavnaya.clicZakaz2();
         }
 
         //вставляем данные на первой странице

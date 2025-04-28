@@ -12,10 +12,6 @@ import java.util.List;
 public class ElementsZakaz {
 
     private final WebDriver driver;
-    //локатор первая кнопка Заказать
-    private final By zakaz1button= By.cssSelector(".Button_Button__ra12g");
-    //локатор вторая кнопка Заказать
-    private final By zakaz2button= By.cssSelector(".Button_Middle__1CSJM");
     //локатор на поле имя
     private final By nameVvod = By.xpath(".//input[@placeholder='* Имя']");
     //локатор на поле фамилия
@@ -46,21 +42,14 @@ public class ElementsZakaz {
     private final By da = By.xpath("//button[text()='Да' and contains(@class, 'Button_Middle__1CSJM')]");
     //локатор на окно подтверждения заказа
     private final By oknoPodtverjdeniyaZakaza = By.xpath("//button[text()='Заказ оформлен' and contains(@class, 'Order_ModalHeader__3FDaJ')]");
-
+    //локатор кнопки принятия куки
+    private final By cookie =By.cssSelector(".App_CookieButton__3cvqF");
 
     //констр класса
     public ElementsZakaz(WebDriver driver) {
         this.driver = driver;
     }
 
-    // метод находим первую кнопку заказ и кликаем по ней
-    public void clickZakaz1(){
-        driver.findElement(zakaz1button).click();
-    }
-    //метод находим вторую кнопку заказ и кликаем по ней
-    public void clickZakaz2() {
-        driver.findElement(zakaz2button).click();
-    }
 
     //метод ввода станции метро
     public void vvodMetro(String data) {
